@@ -2,4 +2,6 @@ classification
 classification/*
 localization
 localization/*
+segmentation
+segmentation/*
 

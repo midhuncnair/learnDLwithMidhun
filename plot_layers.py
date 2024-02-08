@@ -7,7 +7,6 @@ __all__ = [
     'plot_layer_outputs',
     'imshow',
     'apply_patch',
-    'IoU',
 ]
 __license__ = "MIT"
 __author__ = "Midhun C Nair"
