@@ -6,6 +6,8 @@
 __all__ = [
     'plot_layer_outputs',
     'imshow',
+    'apply_patch',
+    'IoU',
 ]
 __license__ = "MIT"
 __author__ = "Midhun C Nair"
@@ -13,9 +15,12 @@ __author__ = "Midhun C Nair"
 
 import os
 import numpy as np
+import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.models import Model
+from tensorflow.keras.backend import epsilon
 from matplotlib import pyplot as plt
+from matplotlib import patches
 
 
 LOCAL_DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'images', 'classification')
@@ -79,3 +84,11 @@ def imshow(img, inline=True):
                 break
         cv2.destroyWindow('img')
         cv2.destroyAllWindows()
+
+
+def apply_patch(img, x0, y0, x1, y1):
+    fig, ax = plt.subplots(1)
+    ax.imshow(img)
+    rect = patches.Rectangle((x0, y0), x1 - x0, y1 - y0, linewidth=2, edgecolor='r', facecolor='none')
+    ax.add_patch(rect)
+    plt.show()
